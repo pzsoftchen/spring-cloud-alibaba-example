@@ -15,6 +15,7 @@
         <module>nacos-consumer-one-example</module>
         <module>nacos-consumer-two-example</module>
         <module>nacos-provider-one-example</module>
+        <module>nacos-provider-two-example</module>
     </modules>
 
 
