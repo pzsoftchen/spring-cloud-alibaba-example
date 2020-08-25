@@ -8,7 +8,7 @@
    - 如 spring.cloud.nacos.config.extension-configs[x].data-id=nacos-mul.properties 则nacos的配置如下图：
    ![](img/nacos-data-id.jpg)
 
-### 实践总结：
+### 实践总结
 > 多租户共用nacos的情况
 - 使用namespace 做租户隔离，使不同租户的配置相互隔离
 - 使用group做环境隔离即：使用group区分 dev-env(开发)/test-env(测试)/gray-env(灰度)/pro-env(生产)等
