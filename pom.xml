@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- 依赖的spring-cloud的版本 -->
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-parent</artifactId>
+        <version>Greenwich.RELEASE</version>
+    </parent>
+
+    <groupId>com.chen</groupId>
+    <artifactId>spring-cloud-alibaba-example</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>spring-cloud-alibaba-example</name>
+    <description>spring-cloud-alibaba 测试</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud-alibaba.version>2.1.2.RELEASE</spring-cloud-alibaba.version>
+        <nepxion.version>6.0.7</nepxion.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <hutool.version>5.3.9</hutool.version>
+        <mybatis-plus.version>3.3.1.tmp</mybatis-plus.version>
+        <mysql-connector.version>5.1.49</mysql-connector.version>
+        <fastjson.version>1.2.73</fastjson.version>
+        <guava.version>28.0-jre</guava.version>
+        <swagger2.version>2.9.2</swagger2.version>
+        <swagger.models.version>1.5.21</swagger.models.version>
+        <jackson.version>2.10.3</jackson.version>
+        <druid.version>1.1.16</druid.version>
+        <jetcache.version>2.6.0</jetcache.version>
+    </properties>
+
+    <modules>
+        <module>spring-cloud-alibaba-nacos-example</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <optimize>true</optimize>
+                    <compilerArgument>-parameters</compilerArgument>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                   <archive>
+                       <manifestEntries>
+                           <Implementation-Revision>${bn-boot.version}</Implementation-Revision>
+                       </manifestEntries>
+                   </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                   <execution>
+                       <id>attach-sources</id>
+                       <goals>
+                           <goal>jar</goal>
+                       </goals>
+                   </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/main/java</directory>
+                <includes>
+                    <!--src/main/java目录下的xml文件也打包-->
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/test/java</directory>
+                <includes>
+                    <!--src/main/java目录下的xml文件也打包-->
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+    
+</project>
