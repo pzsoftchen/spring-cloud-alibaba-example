@@ -21,5 +21,6 @@ public class SimpleProperties {
     public static final String SIMPLE_PREFIX = "simple.nacos";
 
     private Boolean useLocalCache;
+    private String extFlag;
 
 }

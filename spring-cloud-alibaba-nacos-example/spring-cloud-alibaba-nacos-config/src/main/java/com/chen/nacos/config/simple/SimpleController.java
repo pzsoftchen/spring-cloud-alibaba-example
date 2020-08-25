@@ -22,6 +22,7 @@ import java.util.Map;
  * @create: 08/25/2020 11:28:53
  **/
 @Slf4j
+@RefreshScope
 @Controller
 @RequestMapping("simple")
 public class SimpleController {
@@ -29,9 +30,17 @@ public class SimpleController {
     @Autowired
     private SimpleProperties simpleProperties;
 
+    @Value("${nacosTest:xxx}")
+    private String nacosTest;
+
+    public void setNacosTest(String nacosTest) {
+        this.nacosTest = nacosTest;
+    }
+
     @RequestMapping("test")
     @ResponseBody
     public Map<String, Object> test(){
+        log.info("nacosTest:{}", nacosTest);
         log.info("simpleProperties:{}", JSON.toJSONString(simpleProperties));
         return BeanUtil.beanToMap(simpleProperties);
     }
